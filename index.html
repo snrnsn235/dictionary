@@ -6,54 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>사전 검색 서비스</title>
     <link rel="stylesheet" href="style.css">
+    <img src = "./logo_big.png" >
 </head>
+<hr>
 <body>
     <!-- 검색창 -->
     <div id="search-box">
-        <input id = "search" type="text" value="search">
+        <input id = "search" type="text" value="" placeholder="Search alphabet">
         <input id = "submit" type="submit" value="검색"> <!--엘레먼트-->
     </div>
 
     <!-- 사전 -->
-    <div id = "container"> </div>
-    <script>
-        const query = document.getElementById('search')
-        const submitBtn = document.getElementById('submit')
-        const BASE_URL = 'http://localhost:5000/api/words'
-
-        //서버 데이터 가져오기
-        function getData(baseUrl, query){
-            fetch(`${baseUrl}/${query}`, {
-                headers:{
-                    "Content-Type": "application/json"
-                }
-            })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                const {words} = data; //data를 밖으로 꺼내주는 것 
-
-                const template = words.map(word => {
-                    return (
-                    `
-                        <div class = "item">
-                            <div class = "word">${word.name}</div>
-                            <p class="description">${word.description}</p>
-                        </div>
-                    `
-                    )
-                })
-                container.innerHTML = template.join("") //DOM에 Template 삽입
-            })
-        }
-
-        submitBtn.addEventListener('click', function(){
-            console.log(query.value)
-            getData(BASE_URL, query.value)
-        })
-        window.addEventListener('DOMcontentLoaded', function(){
-            getData(BASE_URL)
-        })
-    </script>
+    <div id = "container"> 
+        <img src = "https://w.namu.la/s/43f81fbe37e122f5bfa54daa8a27af6ce5cd326786a50e8c6414a7e32ad8ff142c0b35fcda65ae84a064cb8781f7798921d0397a742fa8fc986131286ab8bac90584396b4d889874c14c277392ee5a81">
+    </div>
+    <script src="app.js"></script>
 </body>
 </html>
